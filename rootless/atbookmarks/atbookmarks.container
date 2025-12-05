@@ -14,6 +14,7 @@ Secret=atbookmarks_postgres_password,type=env,target=POSTGRES_PASSWORD
 AutoUpdate=registry
 
 [Service]
+ExecStartPre=podman login --authfile %h/.config/containers/auth.json ghcr.io
 Restart=always
 RestartSec=5
 

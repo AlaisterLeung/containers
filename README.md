@@ -4,87 +4,83 @@
 
 - Podman 5+
 
-## Setup
-
-First, create a new user:
-```bash
-sudo useradd -m pod_user
-```
+## Installation
 
 ### 1. Rootless containers
 
-1.1 Allow rootless containers to listen to ports from 25:
+Modify system configs, allowing rootless containers to bind to port 25 and to use DRI devices:
 ```bash
 echo 'net.ipv4.ip_unprivileged_port_start=25' | sudo tee /etc/sysctl.d/99-atxoft.conf
-```
-
-1.2 Set up SELinux for DRI devices:
-```bash
 sudo setsebool -P container_use_dri_devices 1
 ```
 
-1.3 Login as `pod_user`:
+Create a new user and login as `pod_user`:
 ```bash
+sudo useradd -m pod_user
 sudo machinectl shell --uid pod_user
 ```
 
-1.4 Enable linger:
+Enable linger, Podman socket and auto-update timer:
 ```bash
 loginctl enable-linger pod_user
-```
-
-1.5 Enable Podman socket and auto-update timer:
-```bash
 systemctl --user enable --now podman.socket podman-auto-update.timer
 ```
 
-1.6 (optional) Log into GitHub Container Registry: (optional)
+(Optional) Log into GitHub Container Registry:
 ```bash
 podman login --authfile $HOME/.config/containers/auth.json ghcr.io
 ```
 
-1.7 Clone this repository:
+Clone this repository, run the installation script, and start the containers:
 ```bash
 git clone https://github.com/AlaisterLeung/containers.git
-```
-
-1.8 Run the installation script and start the containers:
-```bash
 cd containers
 ./install.sh
 systemctl --user start CONTAINER_NAME.service
 ```
 
-1.9 (optional) Set up volume backup:
-```bash
-
-```
-
 ### 2. Rootful containers
 
-2.1 Login as `root`:
+Login as `root`:
 ```bash
 sudo -i
 ```
 
-2.2 Enable Podman socket and auto-update timer:
+Enable Podman socket and auto-update timer:
 ```bash
 systemctl enable --now podman.socket podman-auto-update.timer
 ```
 
-2.3 Clone this repository:
+Clone this repository, run the installation script, and start the containers:
 ```bash
 git clone https://github.com/AlaisterLeung/containers.git
-```
-
-2.4 Run the installation script and start the containers:
-```bash
 cd containers
 ./install.sh
 systemctl start CONTAINER_NAME.service
 ```
 
-2.5 (optional) Set up volume backup:
-```bash
+## Updating
 
+Simply `git pull && ./install.sh` and restart updated containers via systemd
+
+## Volume Backup
+
+### Setup Restic repos
+
+Create local backup directory and copy the config files:
+```bash
+sudo mkdir -p /var/backup/containers
+sudo chown pod_user /var/backup/containers
+sudo cp config/backup/local.env /etc/atxoft/backup/local.env
+sudo cp config/backup/remote.env /etc/atxoft/backup/remote.env
 ```
+
+After editing the configs, initialize Restic repos:
+```bash
+bin/restic.sh local init
+bin/restic.sh remote init
+```
+
+### Restore backup
+
+

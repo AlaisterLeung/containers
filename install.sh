@@ -4,10 +4,10 @@ set -e
 prepare() {
     if [ "$EUID" -eq 0 ]; then
         IS_ROOT=true
-        source "config/env/rootful.sh"
+        source config/env/rootful.sh
     else
         IS_ROOT=false
-        source "config/env/rootless.sh"
+        source config/env/rootless.sh
     fi
 
     mkdir -p "$CONTAINERS_SYSTEMD_DIR"
