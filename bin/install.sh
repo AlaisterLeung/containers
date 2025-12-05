@@ -4,10 +4,10 @@ set -e
 prepare() {
     if [ "$EUID" -eq 0 ]; then
         IS_ROOT=true
-        source config/env/rootful.sh
+        source ../config/env/rootful.sh
     else
         IS_ROOT=false
-        source config/env/rootless.sh
+        source ../config/env/rootless.sh
     fi
 
     mkdir -p "$CONTAINERS_SYSTEMD_DIR"
@@ -41,16 +41,18 @@ install_config() {
 }
 
 install_crontab() {
+    cron_file="$CONTAINERS_REPO_DIR/config/cron/"
     if [ "$IS_ROOT" = true ]; then
-        cron_file="config/cron/rootful.cron"
+        cron_file+="rootful.cron"
     else
-        cron_file="config/cron/rootless.cron"
+        cron_file+="rootless.cron"
     fi
 
     begin_marker="### BEGIN CONTAINERS CRON JOBS ###"
     end_marker="### END CONTAINERS CRON JOBS ###"
 
     cron_file_content=$(cat "$cron_file")
+    cron_file_content="${cron_file_content//\{REPO_DIR\}/$CONTAINERS_REPO_DIR}"
     current_crontab=$(crontab -l 2>/dev/null || true)
 
     if echo "$current_crontab" | grep -q "$begin_marker"; then

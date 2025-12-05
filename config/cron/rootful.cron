@@ -1,3 +1,4 @@
 ### BEGIN CONTAINERS CRON JOBS ###
-10 5 1 * * /bin/podman image prune -af
+0 3 * * * /bin/bash {REPO_DIR}/bin/backup.sh
+0 5 1 * * /bin/podman image prune -af
 ### END CONTAINERS CRON JOBS ###

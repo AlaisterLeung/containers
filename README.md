@@ -35,7 +35,7 @@ Clone this repository, run the installation script, and start the containers:
 ```bash
 git clone https://github.com/AlaisterLeung/containers.git
 cd containers
-./install.sh
+bin/install.sh
 systemctl --user start CONTAINER_NAME.service
 ```
 
@@ -55,13 +55,13 @@ Clone this repository, run the installation script, and start the containers:
 ```bash
 git clone https://github.com/AlaisterLeung/containers.git
 cd containers
-./install.sh
+bin/install.sh
 systemctl start CONTAINER_NAME.service
 ```
 
 ## Updating
 
-Simply `git pull && ./install.sh` and restart updated containers via systemd
+Simply `git pull && bin/install.sh` and restart updated containers via systemd
 
 ## Volume Backup
 
@@ -83,4 +83,7 @@ bin/restic.sh remote init
 
 ### Restore backup
 
-
+Run as `pod_user` and `root` for rootless and rootful container volumes respectively:
+```bash
+bin/restore.sh <local|remote>
+```

@@ -3,9 +3,9 @@ set -e
 
 prepare() {
     if [ "$EUID" -eq 0 ]; then
-        source config/env/rootful.sh
+        source ../config/env/rootful.sh
     else
-        source config/env/rootless.sh
+        source ../config/env/rootless.sh
     fi
 }
 
@@ -48,11 +48,11 @@ backup_export() {
 }
 
 prune_backups() {
-    bin/restic.sh "$1" forget --keep-daily 30 --keep-monthly 6 --prune
+    restic.sh "$1" forget --keep-daily 30 --keep-monthly 6 --prune
 }
 
 check_repo() {
-    bin/restic.sh "$1" check
+    restic.sh "$1" check
 }
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
