@@ -1,0 +1,18 @@
+[Unit]
+Description=Shlink PostgreSQL Database
+
+[Container]
+ContainerName=shlink-postgres
+Image=docker.io/postgres:18-alpine
+Network=shlink.network
+EnvironmentFile=%h/.config/containers/systemd/atxoft/shlink/shlink-postgres.env
+Volume=shlink.volume:/var/lib/postgresql/data
+Secret=shlink_postgres_password,type=env,target=POSTGRES_PASSWORD
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

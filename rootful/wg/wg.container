@@ -1,0 +1,26 @@
+[Unit]
+Description=WireGuard Easy VPN Server
+
+[Container]
+ContainerName=wg
+Image=ghcr.io/wg-easy/wg-easy:15
+Network=wg.network
+PublishPort=51820:51820/udp
+PublishPort=51821:51821/tcp
+EnvironmentFile=/etc/containers/systemd/atxoft/wg/wg.env
+Volume=wg.volume:/etc/wireguard
+Volume=/lib/modules:/lib/modules:ro
+AddCapability=NET_ADMIN NET_RAW SYS_MODULE
+Sysctl=net.ipv4.ip_forward=1
+Sysctl=net.ipv4.conf.all.src_valid_mark=1
+Sysctl=net.ipv6.conf.all.disable_ipv6=0
+Sysctl=net.ipv6.conf.all.forwarding=1
+Sysctl=net.ipv6.conf.default.forwarding=1
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

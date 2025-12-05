@@ -1,0 +1,26 @@
+[Unit]
+Description=Karakeep App
+Wants=karakeep-chrome.service karakeep-meilisearch.service
+After=karakeep-chrome.service karakeep-meilisearch.service
+
+[Container]
+ContainerName=karakeep
+Image=ghcr.io/karakeep-app/karakeep:release
+Network=karakeep.network
+PublishPort=8010:3000
+EnvironmentFile=%h/.config/containers/systemd/atxoft/karakeep/karakeep.env
+EnvironmentFile=%h/.config/atxoft/karakeep/config.env
+Volume=karakeep-data.volume:/data
+Secret=karakeep_nextauth_secret,type=env,target=NEXTAUTH_SECRET
+Secret=karakeep_meili_master_key,type=env,target=MEILI_MASTER_KEY
+Secret=hydroxide_user,type=env,target=SMTP_USER
+Secret=hydroxide_password,type=env,target=SMTP_PASSWORD
+Secret=karakeep_smtp_from,type=env,target=SMTP_FROM
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

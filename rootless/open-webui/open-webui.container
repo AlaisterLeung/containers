@@ -1,0 +1,18 @@
+[Unit]
+Description=Open WebUI
+
+[Container]
+ContainerName=open-webui
+Image=ghcr.io/open-webui/open-webui:main
+Network=open-webui.network
+PublishPort=9070:8080
+EnvironmentFile=%h/.config/containers/systemd/atxoft/open-webui/open-webui.env
+Volume=open-webui.volume:/app/backend/data
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

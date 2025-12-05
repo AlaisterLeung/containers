@@ -1,0 +1,24 @@
+[Unit]
+Description=Pterodactyl Wings
+
+[Container]
+ContainerName=wings
+Image=ghcr.io/pterodactyl/wings:latest
+Network=pterodactyl.network
+PublishPort=8061:8080
+PublishPort=2022:2022
+EnvironmentFile=%h/.config/containers/systemd/atxoft/wings/wings.env
+Volume=wings-config.volume:/etc/pterodactyl
+Volume=wings-logs.volume:/var/log/pterodactyl
+Volume=wings-tmp:/tmp/pterodactyl
+Volume=/run/user/%U/podman/podman.sock:/var/run/docker.sock:z
+Volume=%h/.local/share/containers:/var/lib/docker/containers:z
+Volume=%h/.local/share/pterodactyl:%h/.local/share/pterodactyl:z
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

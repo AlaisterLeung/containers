@@ -1,0 +1,18 @@
+[Unit]
+Description=Red Discord Bot
+
+[Container]
+ContainerName=red-bot
+Image=docker.io/phasecorex/red-discordbot:core-audio
+Network=red-bot.network
+Environment=PREFIX=.
+Volume=red-bot.volume:/data
+Secret=red_bot_token,type=env,target=TOKEN
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

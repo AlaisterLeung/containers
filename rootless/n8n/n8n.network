@@ -1,0 +1,5 @@
+[Network]
+NetworkName=n8n
+Driver=bridge
+IPv6=true
+IPAMDriver=host-local

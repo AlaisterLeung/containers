@@ -1,0 +1,19 @@
+[Unit]
+Description=Invidious
+Requires=invidious-companion.service invidious-postgres.service
+After=invidious-companion.service invidious-postgres.service
+
+[Container]
+ContainerName=invidious
+Image=quay.io/invidious/invidious:latest
+Network=invidious.network
+PublishPort=8090:3000
+Volume=%h/.config/atxoft/invidious/config.yml:/invidious/config/config.yml:Z
+AutoUpdate=registry
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

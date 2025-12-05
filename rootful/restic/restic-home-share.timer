@@ -1,0 +1,9 @@
+[Unit]
+Description=Run restic-home-share daily
+
+[Timer]
+OnCalendar=*-*-* 03:40:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

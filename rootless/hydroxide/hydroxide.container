@@ -1,0 +1,18 @@
+[Unit]
+Description=Hydroxide - Proton Mail Bridge
+
+[Container]
+ContainerName=hydroxide
+Image=registry.gitlab.com/renner0e/hydroxide-podman:latest
+Exec=-smtp-host 0.0.0.0 smtp
+Network=hydroxide.network
+PublishPort=1025:1025
+Volume=hydroxide.volume:/root/.config/hydroxide
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

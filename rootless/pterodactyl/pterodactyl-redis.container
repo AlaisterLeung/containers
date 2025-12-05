@@ -1,0 +1,15 @@
+[Unit]
+Description=Pterodactyl Redis
+
+[Container]
+ContainerName=pterodactyl-redis
+Image=docker.io/redis:alpine
+Network=pterodactyl.network
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

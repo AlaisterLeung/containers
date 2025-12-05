@@ -1,0 +1,5 @@
+### BEGIN CONTAINERS CRON JOBS ###
+0 5 1 * * /usr/bin/podman image prune -af
+
+0 3 * * * /usr/bin/python3 ~/quadlet-files/backup.py run
+### END CONTAINERS CRON JOBS ###

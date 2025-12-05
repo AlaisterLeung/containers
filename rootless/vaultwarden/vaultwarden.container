@@ -1,0 +1,17 @@
+[Unit]
+Description=Vaultwarden
+
+[Container]
+ContainerName=vaultwarden
+Image=docker.io/vaultwarden/server:latest
+Network=vaultwarden.network
+PublishPort=2280:80
+Volume=vaultwarden.volume:/data
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Invidious Postgres
+
+[Container]
+ContainerName=invidious-postgres
+Image=docker.io/library/postgres:14
+Network=invidious.network
+EnvironmentFile=%h/.config/containers/systemd/atxoft/invidious/invidious-postgres.env
+Volume=invidious-data.volume:/var/lib/postgresql/data
+Secret=invidious_postgres_password,type=env,target=POSTGRES_PASSWORD
+AutoUpdate=registry
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

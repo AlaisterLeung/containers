@@ -1,0 +1,5 @@
+[Network]
+NetworkName=invidious
+Driver=bridge
+IPv6=true
+IPAMDriver=host-local

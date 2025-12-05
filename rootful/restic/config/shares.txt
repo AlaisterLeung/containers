@@ -1,0 +1,14 @@
+._*
+.DS_Store
+.Spotlight-V100
+.fseventsd
+.Trashes
+.TemporaryItems
+.DocumentRevisions-V100
+.apdisk
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.com.apple.timemachine.donotpresent
+.Trash-*

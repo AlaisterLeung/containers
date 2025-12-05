@@ -1,0 +1,21 @@
+[Unit]
+Description=Ollama with AMD Cezanne iGPU support
+
+[Container]
+ContainerName=ollama
+Image=docker.io/ollama/ollama:rocm
+Network=open-webui.network
+PublishPort=7869:11434
+# To support AMD Cezanne iGPU
+Environment=HSA_OVERRIDE_GFX_VERSION=9.0.0
+Volume=ollama.volume:/root/.ollama
+AddDevice=/dev/dri
+AddDevice=/dev/kfd
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

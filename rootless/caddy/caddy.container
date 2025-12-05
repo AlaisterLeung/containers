@@ -1,0 +1,22 @@
+[Unit]
+Description=Caddy Server with caddy-security
+
+[Container]
+ContainerName=caddy
+Image=ghcr.io/authcrunch/authcrunch:latest
+Network=host
+Volume=caddy-config.volume:/config
+Volume=caddy-data.volume:/data
+Volume=caddy-users.volume:/users
+Volume=%h/.config/containers/systemd/atxoft/caddy/conf:/etc/caddy:Z
+Volume=/srv/public:/public:Z,ro
+Secret=caddy_crypto_key_id,type=env,target=CRYPTO_KEY_ID
+Secret=caddy_crypto_shared_key,type=env,target=CRYPTO_SHARED_KEY
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
