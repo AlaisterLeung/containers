@@ -9,7 +9,7 @@ fi
 BACKUP_TYPE="$1"
 shift
 
-podman run --rm -it \
+podman run --rm -i \
     --env-file "/etc/atxoft/backup/$BACKUP_TYPE.env" \
     -v restic-cache:/root/.cache/restic \
     -v /var/backup/containers:/backup:z \

@@ -38,12 +38,7 @@ backup_export() {
     local BACKUP_TYPE="$1"
     local VOLUME_NAME="$2"
 
-    podman volume export "$VOLUME_NAME" | podman \
-        run --rm -i \
-        --env-file "/etc/atxoft/backup/$BACKUP_TYPE.env" \
-        -v restic-cache:/root/.cache/restic \
-        -v /var/backup/containers:/backup:z \
-        docker.io/restic/restic:latest \
+    podman volume export "$VOLUME_NAME" | restic.sh "$BACKUP_TYPE" \
         backup --stdin --stdin-filename "$VOLUME_NAME.tar"
 }
 
