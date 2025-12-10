@@ -1,107 +1,104 @@
 {
-  security {
-    local identity store localdb {
-      realm local
-      path /users/local.json
-    }
+	security {
+		local identity store localdb {
+			realm local
+			path /users/local.json
+		}
 
-    authentication portal atportal {
-      enable identity store localdb
-      cookie domain atxoft.com
-      cookie lifetime 2592000
-      crypto default token name atportal_token
-      crypto default token lifetime 2592000
-      crypto key {$CRYPTO_KEY_ID} sign-verify {$CRYPTO_SHARED_KEY}
-      ui {
-        links {
-          "My Profile" "/auth/profile/" icon "las la-user"
-        }
-      }
-      transform user {
-        match realm local
-        require mfa
-        action add role authp/admin
-      }
-    }
+		authentication portal atportal {
+			enable identity store localdb
+			cookie domain atxoft.com
+			cookie lifetime 2592000
+			crypto default token name atportal_token
+			crypto default token lifetime 2592000
+			crypto key {$CRYPTO_KEY_ID} sign-verify {$CRYPTO_SHARED_KEY}
+			ui {
+				links {
+					"My Profile" "/auth/profile/" icon "las la-user"
+				}
+			}
+			transform user {
+				match realm local
+				require mfa
+				action add role authp/admin
+			}
+		}
 
-    authorization policy admin_policy {
-      crypto default token name atportal_token
-      crypto default token lifetime 2592000
-      crypto key {$CRYPTO_KEY_ID} verify {$CRYPTO_SHARED_KEY}
-      set auth url https://my-auth.atxoft.com/auth/
-      allow roles authp/admin
-      acl default allow
-    }
+		authorization policy admin_policy {
+			crypto default token name atportal_token
+			crypto default token lifetime 2592000
+			crypto key {$CRYPTO_KEY_ID} verify {$CRYPTO_SHARED_KEY}
+			set auth url https://my-auth.atxoft.com/auth/
+			allow roles authp/admin
+			acl default allow
+		}
 
-    authorization policy user_policy {
-      crypto default token name atportal_token
-      crypto default token lifetime 2592000
-      crypto key {$CRYPTO_KEY_ID} verify {$CRYPTO_SHARED_KEY}
-      set auth url https://my-auth.atxoft.com/auth/
-      allow roles authp/admin authp/user
-      acl default allow
-    }
-  }
+		authorization policy user_policy {
+			crypto default token name atportal_token
+			crypto default token lifetime 2592000
+			crypto key {$CRYPTO_KEY_ID} verify {$CRYPTO_SHARED_KEY}
+			set auth url https://my-auth.atxoft.com/auth/
+			allow roles authp/admin authp/user
+			acl default allow
+		}
+	}
 }
 
 localhost {
-  respond "Hello, world!"
+	respond "Hello, world!"
 }
 
 b.atxoft.com {
-  reverse_proxy localhost:8040 {
-    header_up X-Real-IP {remote}
-    header_up X-Forwarded-For {remote}
-  }
+	reverse_proxy localhost:8040
 }
 
 fs.atxoft.com {
-  root * /public
-  file_server browse
+	root * /public
+	file_server browse
 }
 
 my-auth.atxoft.com {
-  redir / /auth/ permanent
-  redir /auth /auth/ permanent
-  redir /auth/profile /auth/profile/ permanent
+	redir / /auth/ permanent
+	redir /auth /auth/ permanent
+	redir /auth/profile /auth/profile/ permanent
 
-  route /auth/* {
-    authenticate with atportal
-  }
+	route /auth/* {
+		authenticate with atportal
+	}
 }
 
 my-ai.atxoft.com {
-  route {
-    authorize with user_policy
-    reverse_proxy localhost:9070
-  }
+	route {
+		authorize with user_policy
+		reverse_proxy localhost:9070
+	}
 }
 
 my-bookmarks.atxoft.com {
-  reverse_proxy localhost:8015
+	reverse_proxy localhost:8015
 }
 
 my-converts.atxoft.com {
-  route {
-    authorize with user_policy
-    reverse_proxy localhost:8100
-  }
+	route {
+		authorize with user_policy
+		reverse_proxy localhost:8100
+	}
 }
 
 my-media.atxoft.com {
-  reverse_proxy localhost:8096
+	reverse_proxy localhost:8096
 }
 
 my-yt.atxoft.com {
-  route {
-    authorize with user_policy
+	route {
+		authorize with user_policy
 
-    handle /companion* {
-      reverse_proxy localhost:8282
-    }
+		handle /companion* {
+			reverse_proxy localhost:8282
+		}
 
-    handle {
-      reverse_proxy localhost:8090
-    }
-  }
+		handle {
+			reverse_proxy localhost:8090
+		}
+	}
 }

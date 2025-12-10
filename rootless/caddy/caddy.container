@@ -8,13 +8,14 @@ Network=host
 Volume=caddy-config.volume:/config
 Volume=caddy-data.volume:/data
 Volume=caddy-users.volume:/users
-Volume=%h/.config/containers/systemd/atxoft/caddy/conf:/etc/caddy:Z
-Volume=/srv/public:/public:Z,ro
+Volume=%h/.config/containers/systemd/atxoft/caddy/conf:/etc/caddy:z,ro
+Volume=/srv/public:/public:z,ro
 Secret=caddy_crypto_key_id,type=env,target=CRYPTO_KEY_ID
 Secret=caddy_crypto_shared_key,type=env,target=CRYPTO_SHARED_KEY
 AutoUpdate=registry
 
 [Service]
+ExecReload=/usr/bin/podman exec caddy caddy reload --config /etc/caddy/Caddyfile
 Restart=always
 RestartSec=5
 
