@@ -7,7 +7,7 @@ Image=docker.io/tomsquest/docker-radicale:latest
 Network=radicale.network
 PublishPort=5232:5232
 Volume=radicale.volume:/data
-Volume=%h/.config/atxoft/radicale/config:/config:Z
+Volume=%h/.config/atxoft/radicale/config:/config:z
 AutoUpdate=registry
 
 [Service]

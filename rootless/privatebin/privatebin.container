@@ -7,7 +7,7 @@ Image=docker.io/privatebin/nginx-fpm-alpine:stable
 Network=privatebin.network
 PublishPort=8040:8080
 Volume=privatebin-data:/srv/data
-Volume=%h/.config/atxoft/privatebin/conf.php:/srv/cfg/conf.php:Z,ro
+Volume=%h/.config/atxoft/privatebin/conf.php:/srv/cfg/conf.php:z,ro
 ReadOnly=true
 AutoUpdate=registry
 

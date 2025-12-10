@@ -8,7 +8,7 @@ ContainerName=invidious
 Image=quay.io/invidious/invidious:latest
 Network=invidious.network
 PublishPort=8090:3000
-Volume=%h/.config/atxoft/invidious/config.yml:/invidious/config/config.yml:Z
+Volume=%h/.config/atxoft/invidious/config.yml:/invidious/config/config.yml:z
 AutoUpdate=registry
 
 [Service]
