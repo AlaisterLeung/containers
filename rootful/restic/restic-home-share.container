@@ -16,6 +16,7 @@ Secret=restic_aws_access_key_id,type=env,target=AWS_ACCESS_KEY_ID
 Secret=restic_aws_secret_access_key,type=env,target=AWS_SECRET_ACCESS_KEY
 SecurityLabelDisable=true
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=no

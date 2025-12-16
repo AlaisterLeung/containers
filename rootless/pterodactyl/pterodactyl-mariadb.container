@@ -11,6 +11,7 @@ Volume=pterodactyl-data.volume:/var/lib/mysql
 Secret=pterodactyl_mysql_password,type=env,target=MYSQL_PASSWORD
 Secret=pterodactyl_mysql_root_password,type=env,target=MYSQL_ROOT_PASSWORD
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=always

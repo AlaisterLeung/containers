@@ -10,6 +10,7 @@ EnvironmentFile=%h/.config/containers/systemd/atxoft/convertx/convertx.env
 Volume=convertx.volume:/app/data
 Secret=convertx_jwt_secret,type=env,target=JWT_SECRET
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=always

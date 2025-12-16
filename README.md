@@ -8,10 +8,22 @@
 
 ### 1. Rootless containers
 
-Modify system configs, allowing rootless containers to bind to port 25 and to use DRI devices:
+Modify system configs, enabling binding to port 25, use of DRI devices, and CPU, CPUSET, and IO limit delegation for all users:
 ```bash
 echo 'net.ipv4.ip_unprivileged_port_start=25' | sudo tee /etc/sysctl.d/99-atxoft.conf
+
 sudo setsebool -P container_use_dri_devices 1
+
+sudo mkdir -p /etc/systemd/system/user@.service.d
+cat <<EOF | sudo tee /etc/systemd/system/user@.service.d/delegate.conf
+[Service]
+Delegate=cpu cpuset io memory pids
+EOF
+```
+
+Re-log and confirm the change:
+```bash
+cat /sys/fs/cgroup/user.slice/user-$(id -u).slice/user@$(id -u).service/cgroup.controllers
 ```
 
 Create a new user and login as `pod_user`:

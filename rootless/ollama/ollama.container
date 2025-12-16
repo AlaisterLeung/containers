@@ -12,6 +12,7 @@ Volume=ollama.volume:/root/.ollama
 AddDevice=/dev/dri
 AddDevice=/dev/kfd
 AutoUpdate=registry
+PodmanArgs=--cpus=8 -m=12g
 
 [Service]
 Restart=always

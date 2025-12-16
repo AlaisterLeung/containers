@@ -9,6 +9,7 @@ Network=hydroxide.network
 PublishPort=1025:1025
 Volume=hydroxide.volume:/root/.config/hydroxide
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=always

@@ -10,6 +10,7 @@ Volume=karakeep-meilisearch.volume:/meili_data
 Secret=karakeep_nextauth_secret,type=env,target=NEXTAUTH_SECRET
 Secret=karakeep_meili_master_key,type=env,target=MEILI_MASTER_KEY
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=always

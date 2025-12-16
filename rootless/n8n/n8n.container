@@ -12,6 +12,7 @@ Secret=hydroxide_user,type=env,target=N8N_SMTP_USER
 Secret=hydroxide_password,type=env,target=N8N_SMTP_PASS
 Secret=n8n_smtp_sender,type=env,target=N8N_SMTP_SENDER
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=always

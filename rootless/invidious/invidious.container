@@ -10,6 +10,7 @@ Network=invidious.network
 PublishPort=8090:3000
 Volume=%h/.config/atxoft/invidious/config.yml:/invidious/config/config.yml:z
 AutoUpdate=registry
+PodmanArgs=--cpus=2 -m=4g
 
 [Service]
 Restart=on-failure
