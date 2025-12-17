@@ -9,7 +9,7 @@ Environment=PREFIX=.
 Volume=red-bot.volume:/data
 Secret=red_bot_token,type=env,target=TOKEN
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

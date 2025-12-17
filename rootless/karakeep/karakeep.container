@@ -17,7 +17,7 @@ Secret=hydroxide_user,type=env,target=SMTP_USER
 Secret=hydroxide_password,type=env,target=SMTP_PASSWORD
 Secret=karakeep_smtp_from,type=env,target=SMTP_FROM
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

@@ -17,7 +17,7 @@ Sysctl=net.ipv6.conf.all.disable_ipv6=0
 Sysctl=net.ipv6.conf.all.forwarding=1
 Sysctl=net.ipv6.conf.default.forwarding=1
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

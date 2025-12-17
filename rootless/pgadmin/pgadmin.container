@@ -15,7 +15,7 @@ Secret=hydroxide_password,type=env,target=PGADMIN_CONFIG_MAIL_PASSWORD
 Secret=pgadmin_config_mail_sender,type=env,target=PGADMIN_CONFIG_MAIL_DEFAULT_SENDER
 Secret=pgadmin_config_mail_sender,type=env,target=PGADMIN_CONFIG_SECURITY_EMAIL_SENDER
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

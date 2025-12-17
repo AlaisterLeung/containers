@@ -15,7 +15,7 @@ Volume=/run/user/%U/podman/podman.sock:/var/run/docker.sock:z
 Volume=%h/.local/share/containers:/var/lib/docker/containers:z
 Volume=%h/.local/share/pterodactyl:%h/.local/share/pterodactyl:z
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

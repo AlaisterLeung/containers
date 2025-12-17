@@ -14,7 +14,7 @@ AddDevice=/dev/dri
 UserNS=keep-id
 SecurityLabelDisable=true
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=8g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

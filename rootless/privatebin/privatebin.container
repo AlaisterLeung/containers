@@ -10,7 +10,7 @@ Volume=privatebin-data:/srv/data
 Volume=%h/.config/atxoft/privatebin/conf.php:/srv/cfg/conf.php:z,ro
 ReadOnly=true
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

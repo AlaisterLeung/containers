@@ -10,7 +10,7 @@ Volume=invidious-cache:/var/tmp/youtubei.js
 # Same as invidious_companion_key in config.yml
 Secret=invidious_companion_key,type=env,target=SERVER_SECRET_KEY
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=on-failure

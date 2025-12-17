@@ -9,7 +9,7 @@ EnvironmentFile=%h/.config/containers/systemd/atxoft/invidious/invidious-postgre
 Volume=invidious-data.volume:/var/lib/postgresql/data
 Secret=invidious_postgres_password,type=env,target=POSTGRES_PASSWORD
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=on-failure

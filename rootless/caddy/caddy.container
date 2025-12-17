@@ -13,7 +13,7 @@ Volume=/srv/public:/public:z,ro
 Secret=caddy_crypto_key_id,type=env,target=CRYPTO_KEY_ID
 Secret=caddy_crypto_shared_key,type=env,target=CRYPTO_SHARED_KEY
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=6 -m=6g
 
 [Service]
 ExecReload=/usr/bin/podman exec caddy caddy reload --config /etc/caddy/Caddyfile

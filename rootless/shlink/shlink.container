@@ -12,7 +12,7 @@ EnvironmentFile=%h/.config/containers/systemd/atxoft/shlink/shlink.env
 Secret=shlink_postgres_password,type=env,target=DB_PASSWORD
 Secret=shlink_geolite_license_key,type=env,target=GEOLITE_LICENSE_KEY
 AutoUpdate=registry
-PodmanArgs=--cpus=2 -m=4g
+PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always
