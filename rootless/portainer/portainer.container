@@ -10,7 +10,7 @@ PublishPort=9000:9000
 PublishPort=9443:9443
 Volume=/run/user/%U/podman/podman.sock:/var/run/docker.sock:z
 Volume=portainer.volume:/data
-SecurityLabelDisable=true
+SecurityLabelType=container_runtime_t
 AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
 

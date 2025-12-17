@@ -12,7 +12,7 @@ Volume=jellyfin-config.volume:/config
 Volume=/srv/home-share:/media
 AddDevice=/dev/dri
 UserNS=keep-id
-SecurityLabelDisable=true
+SecurityLabelType=container_runtime_t
 AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
 

@@ -11,6 +11,7 @@ Environment=HSA_OVERRIDE_GFX_VERSION=9.0.0
 Volume=ollama.volume:/root/.ollama
 AddDevice=/dev/dri
 AddDevice=/dev/kfd
+SecurityLabelType=container_runtime_t
 AutoUpdate=registry
 PodmanArgs=--cpus=8 -m=8g
 

@@ -1,0 +1,20 @@
+[Unit]
+Description=Ser2net
+
+[Container]
+ContainerName=ser2net
+Image=ghcr.io/jippi/docker-ser2net:latest
+Network=host
+PublishPort=2000:2000
+Volume=%h/.config/containers/systemd/atxoft/ser2net/ser2net.yaml:/etc/ser2net/ser2net.yaml:z,ro
+AddDevice=/dev/ttyS0
+SecurityLabelType=container_runtime_t
+AutoUpdate=registry
+PodmanArgs=--cpus=4 -m=4g
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
