@@ -1,0 +1,5 @@
+[Network]
+NetworkName=immich
+Driver=bridge
+IPv6=true
+IPAMDriver=host-local

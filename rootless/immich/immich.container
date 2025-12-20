@@ -1,0 +1,24 @@
+[Unit]
+Description=Immich
+After=immich-ml.service immich-postgres.service immich-redis.service
+Requires=immich-ml.service immich-postgres.service immich-redis.service
+
+[Container]
+ContainerName=immich
+Image=ghcr.io/immich-app/immich-server:release
+Network=immich.network
+PublishPort=2283:2283
+EnvironmentFile=%h/.config/containers/systemd/atxoft/immich/immich.env
+Secret=immich_postgres_password,type=env,target=DB_PASSWORD
+Volume=immich-library.volume:/data
+AddDevice=/dev/dri
+AddDevice=/dev/kfd
+AutoUpdate=registry
+PodmanArgs=--cpus=4 -m=4g
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

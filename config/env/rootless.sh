@@ -23,6 +23,9 @@ export CONTAINERS_SECRETS=(
     # Hydroxide
     hydroxide_user
 
+    # Immich
+    immich_postgres_password
+
     # Invidious
     invidious_companion_key invidious_postgres_password
 

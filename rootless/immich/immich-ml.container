@@ -1,0 +1,20 @@
+[Unit]
+Description=Immich Machine Learning
+
+[Container]
+ContainerName=immich-machine-learning
+Image=ghcr.io/immich-app/immich-machine-learning:release-rocm
+Network=immich.network
+Environment=HSA_OVERRIDE_GFX_VERSION=9.0.0
+Volume=immich-model-cache:/cache
+AddDevice=/dev/dri
+AddDevice=/dev/kfd
+AutoUpdate=registry
+PodmanArgs=--cpus=4 -m=8g
+
+[Service]
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
