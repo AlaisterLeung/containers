@@ -8,8 +8,8 @@ Exec=tunnel run
 Network=host
 Environment=NO_AUTOUPDATE=true
 Secret=cloudflared_tunnel_token,type=env,target=TUNNEL_TOKEN
+PodmanArgs=--cpus=2 -m=1g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

@@ -7,10 +7,10 @@ Image=docker.io/privatebin/nginx-fpm-alpine:stable
 Network=privatebin.network
 PublishPort=8040:8080
 Volume=privatebin-data:/srv/data
-Volume=%h/.config/atxoft/privatebin/conf.php:/srv/cfg/conf.php:z,ro
+Volume=%h/.config/atxoft/privatebin/conf.php.ini:/srv/cfg/conf.php:z,ro
 ReadOnly=true
+PodmanArgs=--cpus=2 -m=2g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

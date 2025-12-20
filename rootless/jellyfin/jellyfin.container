@@ -13,8 +13,8 @@ Volume=/srv/home-share:/media
 AddDevice=/dev/dri
 UserNS=keep-id
 SecurityLabelType=container_runtime_t
-AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

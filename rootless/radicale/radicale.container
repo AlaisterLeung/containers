@@ -1,5 +1,5 @@
 [Unit]
-Description=Radicale
+Description=Radicale CalDAV and CardDAV Server
 
 [Container]
 ContainerName=radicale
@@ -8,8 +8,8 @@ Network=radicale.network
 PublishPort=5232:5232
 Volume=radicale.volume:/data
 Volume=%h/.config/atxoft/radicale/config:/config:z
+PodmanArgs=--cpus=2 -m=2g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

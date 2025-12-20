@@ -9,16 +9,16 @@ Image=ghcr.io/pterodactyl/panel:latest
 Network=pterodactyl.network
 PublishPort=8060:80
 EnvironmentFile=%h/.config/containers/systemd/atxoft/pterodactyl/pterodactyl.env
-Volume=pterodactyl-var.volume:/app/var
-Volume=pterodactyl-nginx.volume:/etc/nginx/http.d
-Volume=pterodactyl-logs.volume:/app/storage/logs
 Secret=pterodactyl_service_author,type=env,target=APP_SERVICE_AUTHOR
 Secret=pterodactyl_mysql_password,type=env,target=DB_PASSWORD
 Secret=hydroxide_user,type=env,target=MAIL_USERNAME
 Secret=hydroxide_password,type=env,target=MAIL_PASSWORD
 Secret=pterodactyl_mail_from,type=env,target=MAIL_FROM
+Volume=pterodactyl-var.volume:/app/var
+Volume=pterodactyl-nginx.volume:/etc/nginx/http.d
+Volume=pterodactyl-logs.volume:/app/storage/logs
+PodmanArgs=--cpus=2 -m=2g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

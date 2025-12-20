@@ -5,8 +5,8 @@ Description=Immich Redis (Valkey)
 ContainerName=immich-redis
 Image=docker.io/valkey/valkey:8
 Network=immich.network
-AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

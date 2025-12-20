@@ -5,15 +5,15 @@ Description=Caddy Server with caddy-security
 ContainerName=caddy
 Image=ghcr.io/authcrunch/authcrunch:latest
 Network=host
+Secret=caddy_crypto_key_id,type=env,target=CRYPTO_KEY_ID
+Secret=caddy_crypto_shared_key,type=env,target=CRYPTO_SHARED_KEY
 Volume=caddy-config.volume:/config
 Volume=caddy-data.volume:/data
 Volume=caddy-users.volume:/users
 Volume=%h/.config/containers/systemd/atxoft/caddy/conf:/etc/caddy:z,ro
 Volume=/srv/public:/public:z,ro
-Secret=caddy_crypto_key_id,type=env,target=CRYPTO_KEY_ID
-Secret=caddy_crypto_shared_key,type=env,target=CRYPTO_SHARED_KEY
+PodmanArgs=--cpus=4 -m=4g
 AutoUpdate=registry
-PodmanArgs=--cpus=6 -m=6g
 
 [Service]
 ExecReload=/usr/bin/podman exec caddy caddy reload --config /etc/caddy/Caddyfile

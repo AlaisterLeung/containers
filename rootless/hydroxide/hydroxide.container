@@ -8,8 +8,8 @@ Exec=-smtp-host 0.0.0.0 smtp
 Network=hydroxide.network
 PublishPort=1025:1025
 Volume=hydroxide.volume:/root/.config/hydroxide
-AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

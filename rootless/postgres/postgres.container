@@ -6,10 +6,10 @@ ContainerName=postgres
 Image=docker.io/postgres:18-alpine
 Network=postgres.network
 PublishPort=5432:5432
-Volume=postgres.volume:/var/lib/postgresql
 Secret=postgres_password,type=env,target=POSTGRES_PASSWORD
-AutoUpdate=registry
+Volume=postgres.volume:/var/lib/postgresql
 PodmanArgs=--cpus=4 -m=8g
+AutoUpdate=registry
 
 [Service]
 Restart=always

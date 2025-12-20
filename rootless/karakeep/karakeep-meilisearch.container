@@ -6,11 +6,11 @@ ContainerName=karakeep-meilisearch
 Image=docker.io/getmeili/meilisearch:v1.11.1
 Network=karakeep.network
 EnvironmentFile=%h/.config/containers/systemd/atxoft/karakeep/karakeep.env
-Volume=karakeep-meilisearch.volume:/meili_data
 Secret=karakeep_nextauth_secret,type=env,target=NEXTAUTH_SECRET
 Secret=karakeep_meili_master_key,type=env,target=MEILI_MASTER_KEY
-AutoUpdate=registry
+Volume=karakeep-meilisearch.volume:/meili_data
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

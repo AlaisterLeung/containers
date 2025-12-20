@@ -6,10 +6,10 @@ ContainerName=red-bot
 Image=docker.io/phasecorex/red-discordbot:core-audio
 Network=red-bot.network
 Environment=PREFIX=.
-Volume=red-bot.volume:/data
 Secret=red_bot_token,type=env,target=TOKEN
-AutoUpdate=registry
+Volume=red-bot.volume:/data
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

@@ -6,10 +6,10 @@ ContainerName=invidious-postgres
 Image=docker.io/library/postgres:14
 Network=invidious.network
 EnvironmentFile=%h/.config/containers/systemd/atxoft/invidious/invidious-postgres.env
-Volume=invidious-data.volume:/var/lib/postgresql/data
 Secret=invidious_postgres_password,type=env,target=POSTGRES_PASSWORD
-AutoUpdate=registry
+Volume=invidious-data.volume:/var/lib/postgresql/data
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=on-failure

@@ -5,8 +5,8 @@ Description=Pterodactyl Redis
 ContainerName=pterodactyl-redis
 Image=docker.io/redis:alpine
 Network=pterodactyl.network
-AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

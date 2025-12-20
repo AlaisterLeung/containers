@@ -9,8 +9,8 @@ PublishPort=2000:2000
 Volume=%h/.config/containers/systemd/atxoft/ser2net/ser2net.yaml:/etc/ser2net/ser2net.yaml:z,ro
 AddDevice=/dev/ttyS0
 SecurityLabelType=container_runtime_t
+PodmanArgs=--cpus=1 -m=1g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

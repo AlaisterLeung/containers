@@ -14,8 +14,8 @@ Volume=wings-tmp:/tmp/pterodactyl
 Volume=/run/user/%U/podman/podman.sock:/var/run/docker.sock:z
 Volume=%h/.local/share/containers:/var/lib/docker/containers:z
 Volume=%h/.local/share/pterodactyl:%h/.local/share/pterodactyl:z
+PodmanArgs=--cpus=2 -m=2g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 Restart=always

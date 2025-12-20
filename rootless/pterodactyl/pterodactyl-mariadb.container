@@ -7,11 +7,11 @@ Image=docker.io/mariadb:10.5
 Exec=--default-authentication-plugin=mysql_native_password
 Network=pterodactyl.network
 EnvironmentFile=%h/.config/containers/systemd/atxoft/pterodactyl/pterodactyl-mariadb.env
-Volume=pterodactyl-data.volume:/var/lib/mysql
 Secret=pterodactyl_mysql_password,type=env,target=MYSQL_PASSWORD
 Secret=pterodactyl_mysql_root_password,type=env,target=MYSQL_ROOT_PASSWORD
-AutoUpdate=registry
+Volume=pterodactyl-data.volume:/var/lib/mysql
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

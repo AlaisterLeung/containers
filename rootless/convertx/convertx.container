@@ -7,10 +7,10 @@ Image=docker.io/c4illin/convertx:latest
 Network=convertx.network
 PublishPort=8100:3000
 EnvironmentFile=%h/.config/containers/systemd/atxoft/convertx/convertx.env
-Volume=convertx.volume:/app/data
 Secret=convertx_jwt_secret,type=env,target=JWT_SECRET
-AutoUpdate=registry
+Volume=convertx.volume:/app/data
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=always

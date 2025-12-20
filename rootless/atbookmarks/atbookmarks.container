@@ -11,8 +11,8 @@ PublishPort=8015:8080
 EnvironmentFile=%h/.config/containers/systemd/atxoft/atbookmarks/atbookmarks.env
 Secret=atbookmarks_karakeep_api_key,type=env,target=KARAKEEP_API_KEY
 Secret=atbookmarks_postgres_password,type=env,target=POSTGRES_PASSWORD
+PodmanArgs=--cpus=2 -m=2g
 AutoUpdate=registry
-PodmanArgs=--cpus=4 -m=4g
 
 [Service]
 ExecStartPre=podman login --authfile %h/.config/containers/auth.json ghcr.io

@@ -9,8 +9,8 @@ Image=quay.io/invidious/invidious:latest
 Network=invidious.network
 PublishPort=8090:3000
 Volume=%h/.config/atxoft/invidious/config.yml:/invidious/config/config.yml:z
-AutoUpdate=registry
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=on-failure

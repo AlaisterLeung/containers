@@ -6,17 +6,17 @@ ContainerName=restic-home-share
 Image=docker.io/restic/restic:latest
 Entrypoint=/backup.sh
 HostName=atxoft
-Volume=restic-cache:/root/.cache/restic
-Volume=/srv/home-share:/host/home-share:ro
-Volume=/etc/containers/systemd/atxoft/restic/config/shares.txt:/etc/restic/excludes.txt:ro
-Volume=/etc/containers/systemd/atxoft/restic/bin/backup-home-share.sh:/backup.sh
 Secret=restic_home_share_repository,type=env,target=RESTIC_REPOSITORY
 Secret=restic_home_share_password,type=env,target=RESTIC_PASSWORD
 Secret=restic_aws_access_key_id,type=env,target=AWS_ACCESS_KEY_ID
 Secret=restic_aws_secret_access_key,type=env,target=AWS_SECRET_ACCESS_KEY
+Volume=restic-cache:/root/.cache/restic
+Volume=/srv/home-share:/host/home-share:ro
+Volume=/etc/containers/systemd/atxoft/restic/config/shares.txt:/etc/restic/excludes.txt:ro
+Volume=/etc/containers/systemd/atxoft/restic/bin/backup-home-share.sh:/backup.sh
 SecurityLabelType=container_runtime_t
-AutoUpdate=registry
 PodmanArgs=--cpus=2 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=no

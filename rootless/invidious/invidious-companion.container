@@ -6,11 +6,11 @@ ContainerName=invidious-companion
 Image=quay.io/invidious/invidious-companion:latest
 Network=invidious.network
 PublishPort=8282:8282
-Volume=invidious-cache:/var/tmp/youtubei.js
 # Same as invidious_companion_key in config.yml
 Secret=invidious_companion_key,type=env,target=SERVER_SECRET_KEY
-AutoUpdate=registry
+Volume=invidious-cache:/var/tmp/youtubei.js
 PodmanArgs=--cpus=4 -m=4g
+AutoUpdate=registry
 
 [Service]
 Restart=on-failure
