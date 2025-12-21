@@ -10,6 +10,7 @@ BACKUP_TYPE="$1"
 shift
 
 podman run --rm -i \
+    --user "$(id -u pod_user):$(id -g pod_user)" \
     --env-file "/etc/atxoft/backup/$BACKUP_TYPE.env" \
     -v restic-cache:/root/.cache/restic \
     -v /var/backup/containers:/backup:z \

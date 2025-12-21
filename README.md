@@ -26,9 +26,21 @@ Re-log and confirm the change:
 cat /sys/fs/cgroup/user.slice/user-$(id -u).slice/user@$(id -u).service/cgroup.controllers
 ```
 
-Create a new user and login as `pod_user`:
+Create a new user, and set up user memory limit:
 ```bash
 sudo useradd -m pod_user
+sudo systemctl edit --force --full user-$(id -u pod_user).slice
+sudo systemctl daemon-reload
+```
+
+```ini
+[Slice]
+MemoryHigh=85%
+MemoryMax=90%
+```
+
+Login as `pod_user` to complete the installation:
+```bash
 sudo machinectl shell --uid pod_user
 ```
 
@@ -79,12 +91,11 @@ Simply `git pull && bin/install.sh` and restart updated containers via systemd
 
 ### Setup Restic repos
 
-Create local backup directory and copy the config files:
+Run as `root`, create local backup directory and copy the config files:
 ```bash
-sudo mkdir -p /var/backup/containers
-sudo chown pod_user /var/backup/containers
-sudo cp config/backup/local.env /etc/atxoft/backup/local.env
-sudo cp config/backup/remote.env /etc/atxoft/backup/remote.env
+mkdir -p /var/backup/containers
+chown pod_user /var/backup/containers
+cp config/backup/*.env /etc/atxoft/backup/*.env
 ```
 
 After editing the configs, initialize Restic repos:
