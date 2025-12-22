@@ -101,9 +101,9 @@ Simply `git pull && bin/install.sh` and restart updated containers via systemd
 
 Run as `root`, create local backup directory and copy the config files:
 ```bash
-mkdir -p /var/backup/containers
-chown pod_user /var/backup/containers
-cp config/backup/*.env /etc/atxoft/backup/*.env
+mkdir -p /var/backup/containers /etc/atxoft/backup
+chown -R pod_user:pod_user /var/backup
+cp config/backup/*.env /etc/atxoft/backup
 ```
 
 After editing the config files `/etc/atxoft/backup/*.env`, initialize Restic repos:

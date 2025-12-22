@@ -78,6 +78,8 @@ create_secrets() {
         echo
     }
 
+    echo "Enter container secrets:"
+
     for secret in "${CONTAINERS_SECRETS[@]}"; do
         podman secret exists "$secret" && continue
 
