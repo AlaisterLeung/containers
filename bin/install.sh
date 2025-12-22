@@ -19,7 +19,7 @@ install() {
 
 daemon_reload() {
     if [ "$IS_ROOT" = true ]; then
-        sudo systemctl daemon-reload
+        systemctl daemon-reload
     else
         systemctl --user daemon-reload
     fi
@@ -70,10 +70,12 @@ install_timers() {
         timer_name=$(basename "$timer_file")
 
         if [ "$IS_ROOT" = true ]; then
-            ln -sfn "$timer_file" "/etc/systemd/system/$timer_name"
+            cp -f "$timer_file" "/etc/systemd/system/$timer_name"
+            systemctl daemon-reload
             systemctl enable --now "$timer_name"
         else
             ln -sfn "$timer_file" "$HOME/.config/systemd/user/$timer_name"
+            systemctl --user daemon-reload
             systemctl --user enable --now "$timer_name"
         fi
     done
@@ -106,7 +108,7 @@ create_secrets() {
 
 test_installation() {
     if [ "$IS_ROOT" = true ]; then
-        sudo /lib/systemd/system-generators/podman-system-generator -dryrun >/dev/null
+        /lib/systemd/system-generators/podman-system-generator -dryrun >/dev/null
     else
         /lib/systemd/user-generators/podman-user-generator -user -dryrun >/dev/null
     fi
