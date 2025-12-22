@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-sudo mkdir /srv/public
-sudo chown "$(id -u):$(id -g)" /srv/public
-sudo chmod 755 /srv/public
+sudo mkdir -p /srv/public
+sudo chown pod_user:pod_user /srv/public
+sudo chmod 777 /srv/public

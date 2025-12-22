@@ -55,12 +55,16 @@ systemctl --user enable --now podman.socket podman-auto-update.timer
 podman login --authfile $HOME/.config/containers/auth.json ghcr.io
 ```
 
-Clone this repository, run the installation script, and start the containers:
+Clone this repository and run the installation script:
 ```bash
 git clone https://github.com/AlaisterLeung/containers.git
 cd containers
 bin/install.sh
-systemctl --user start CONTAINER_NAME.service
+```
+
+After editing config files in `$HOME/.config/atxoft` and executing setup scripts `rootless/NAME/setup.sh`, start the containers:
+```bash
+systemctl --user start NAME.service
 ```
 
 ### 2. Rootful containers
@@ -75,12 +79,16 @@ Enable Podman socket and auto-update timer:
 systemctl enable --now podman.socket podman-auto-update.timer
 ```
 
-Clone this repository, run the installation script, and start the containers:
+Clone this repository and run the installation script:
 ```bash
 git clone https://github.com/AlaisterLeung/containers.git
 cd containers
 bin/install.sh
-systemctl start CONTAINER_NAME.service
+```
+
+After editing config files in `/etc/atxoft` and executing setup scripts `rootful/NAME/setup.sh`, start the containers:
+```bash
+systemctl start NAME.service
 ```
 
 ## Updating
@@ -98,7 +106,7 @@ chown pod_user /var/backup/containers
 cp config/backup/*.env /etc/atxoft/backup/*.env
 ```
 
-After editing the configs, initialize Restic repos:
+After editing the config files `/etc/atxoft/backup/*.env`, initialize Restic repos:
 ```bash
 bin/restic.sh local init
 bin/restic.sh remote init
