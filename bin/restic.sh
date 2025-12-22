@@ -9,15 +9,10 @@ fi
 BACKUP_TYPE="$1"
 shift
 
-PODMAN_ARGS=()
-if [ "$EUID" -eq 0 ]; then
-    PODMAN_ARGS=(--uidmap "0:$(id -u pod_user):1" --gidmap "0:$(id -g pod_user):1")
-fi
-
 podman run --rm -i \
     -h atxoft \
     --env-file "/etc/atxoft/backup/$BACKUP_TYPE.env" \
-    -v restic-cache:/root/.cache/restic \
+    -v restic-cache:/.cache/restic \
     -v /var/backup/containers:/backup:z \
-    "${PODMAN_ARGS[@]}" \
+    --userns "keep-id:uid=$(id -u pod_user),gid=$(id -g pod_user)" \
     docker.io/restic/restic:latest "$@"
