@@ -39,11 +39,11 @@ backup_export() {
     local VOLUME_NAME="$2"
 
     podman volume export "$VOLUME_NAME" | ./restic.sh "$BACKUP_TYPE" \
-        backup --stdin --stdin-filename "$VOLUME_NAME.tar"
+        backup --stdin --stdin-filename "$VOLUME_NAME.tar" --quiet
 }
 
 prune_backups() {
-    ./restic.sh "$1" forget --keep-daily 30 --keep-monthly 6 --prune
+    ./restic.sh "$1" forget --keep-daily 30 --keep-monthly 6 --prune --quiet
 }
 
 check_repo() {
