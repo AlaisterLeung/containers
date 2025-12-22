@@ -21,7 +21,7 @@ Volume=/usr:/host/usr:ro
 Volume=/var:/host/var:ro
 Volume=/etc/containers/systemd/atxoft/restic/config/root.txt:/etc/restic/excludes.txt:ro
 Volume=/etc/containers/systemd/atxoft/restic/bin/backup-root.sh:/backup.sh
-SecurityLabelType=container_runtime_t
+SecurityLabelDisable=true
 PodmanArgs=--cpus=2 -m=4g
 AutoUpdate=registry
 

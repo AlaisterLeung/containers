@@ -14,7 +14,7 @@ Volume=restic-cache:/root/.cache/restic
 Volume=/home/alaister/share:/host/lj-share:ro
 Volume=/etc/containers/systemd/atxoft/restic/config/shares.txt:/etc/restic/excludes.txt:ro
 Volume=/etc/containers/systemd/atxoft/restic/bin/backup-lj-share.sh:/backup.sh
-SecurityLabelType=container_runtime_t
+SecurityLabelDisable=true
 PodmanArgs=--cpus=2 -m=4g
 AutoUpdate=registry
 
