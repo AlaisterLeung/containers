@@ -38,8 +38,8 @@ backup_export() {
     local BACKUP_TYPE="$1"
     local VOLUME_NAME="$2"
 
-    podman volume export "$VOLUME_NAME" | ./restic.sh "$BACKUP_TYPE" \
-        backup --stdin --stdin-filename "$VOLUME_NAME.tar"
+    ./restic.sh "$BACKUP_TYPE" backup --stdin-filename "$VOLUME_NAME.tar" --stdin-from-command -- \
+        podman volume export "$VOLUME_NAME"
 }
 
 prune_backups() {

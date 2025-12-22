@@ -15,8 +15,9 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 podman run --rm -i \
-    "${PODMAN_ARGS[@]}" \
+    -h atxoft \
     --env-file "/etc/atxoft/backup/$BACKUP_TYPE.env" \
     -v restic-cache:/root/.cache/restic \
     -v /var/backup/containers:/backup:z \
+    "${PODMAN_ARGS[@]}" \
     docker.io/restic/restic:latest "$@"
