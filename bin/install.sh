@@ -10,11 +10,11 @@ prepare() {
         source ../config/env/rootless.sh
     fi
 
-    mkdir -p "$CONTAINERS_SYSTEMD_DIR"
+    mkdir -p "$(dirname "$CONTAINERS_SYSTEMD_DIR")"
 }
 
 install() {
-    ln -sf "$CONTAINERS_SRC_DIR" "$CONTAINERS_SYSTEMD_DIR"
+    ln -sfn "$CONTAINERS_SRC_DIR" "$CONTAINERS_SYSTEMD_DIR"
 }
 
 daemon_reload() {
