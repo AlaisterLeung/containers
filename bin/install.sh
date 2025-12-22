@@ -26,7 +26,7 @@ daemon_reload() {
 }
 
 install_config() {
-    for config_file in "$CONTAINERS_SRC_DIR"/*/config.*; do
+    for config_file in "$CONTAINERS_SRC_DIR"/*/config.* "$CONTAINERS_SRC_DIR"/*/conf.*; do
         [ -f "$config_file" ] || continue
 
         name=$(basename "$(dirname "$config_file")")
