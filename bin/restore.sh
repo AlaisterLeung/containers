@@ -21,23 +21,23 @@ restore_volumes() {
 
         echo -n "$volume_name"
 
-        podman volume create "$volume_name"
+        podman volume create "$volume_name" &>/dev/null
         import_backup "$volume_name"
-
-        echo " - done"
     done
 }
 
 import_backup() {
     local VOLUME_NAME="$1"
 
-    if ! restic.sh "$BACKUP_TYPE" ls latest --quiet "$VOLUME_NAME.tar" &>/dev/null; then
+    if ! ./restic.sh "$BACKUP_TYPE" snapshots --path "/$VOLUME_NAME.tar" --latest 1 --quiet | grep -q .; then
         echo " - warning: no backup found!"
         return
     fi
 
-    restic.sh "$BACKUP_TYPE" restore latest --target - \
-        --include "$VOLUME_NAME.tar" | podman volume import "$VOLUME_NAME" -
+    ./restic.sh "$BACKUP_TYPE" dump latest "/$VOLUME_NAME.tar" --path "/$VOLUME_NAME.tar" |
+        podman volume import "$VOLUME_NAME" -
+
+    echo " - done"
 }
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
