@@ -63,6 +63,22 @@ install_crontab() {
     fi
 }
 
+install_timers() {
+    for timer_file in "$CONTAINERS_SRC_DIR"/*/*.timer; do
+        [ -f "$timer_file" ] || continue
+
+        timer_name=$(basename "$timer_file")
+
+        if [ "$IS_ROOT" = true ]; then
+            ln -sfn "$timer_file" "/etc/systemd/system/$timer_name"
+            systemctl enable --now "$timer_name"
+        else
+            ln -sfn "$timer_file" "$HOME/.config/systemd/user/$timer_name"
+            systemctl --user enable --now "$timer_name"
+        fi
+    done
+}
+
 create_secrets() {
     input_secret() {
         unset secret_value
@@ -105,6 +121,7 @@ install
 daemon_reload
 install_config
 install_crontab
+install_timers
 create_secrets
 test_installation
 
