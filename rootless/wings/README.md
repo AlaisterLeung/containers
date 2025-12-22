@@ -12,9 +12,13 @@
 mkdir -p $HOME/.local/share/pterodactyl
 ```
 
-### Pterodactyl node config.yml
+### Create a node in Pterodactyl Panel
 
 - Set **`Daemon Server File Directory`** to `/home/pod_user/.local/share/pterodactyl`
+- Set **`Daemon Port`** to `443`
+
+### Edit Wings config.yml
+
 - Under **`system.user.rootless`**, set:
   - `enabled` to `true`
   - both `container_uid` and `container_gid` to `988`

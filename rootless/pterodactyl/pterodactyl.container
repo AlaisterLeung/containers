@@ -1,7 +1,7 @@
 [Unit]
 Description=Pterodactyl Panel
-Wants=pterodactyl-mariadb.service pterodactyl-redis.service wings.service
-After=pterodactyl-mariadb.service pterodactyl-redis.service wings.service
+Wants=pterodactyl-mariadb.service pterodactyl-redis.service
+After=pterodactyl-mariadb.service pterodactyl-redis.service
 
 [Container]
 ContainerName=pterodactyl
