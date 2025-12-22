@@ -1,5 +1,2 @@
 [Network]
 NetworkName=open-webui
-Driver=bridge
-IPv6=true
-IPAMDriver=host-local

@@ -1,5 +1,2 @@
 [Network]
 NetworkName=shlink
-Driver=bridge
-IPv6=true
-IPAMDriver=host-local

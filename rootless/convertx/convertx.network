@@ -1,5 +1,2 @@
 [Network]
 NetworkName=convertx
-Driver=bridge
-IPv6=true
-IPAMDriver=host-local

@@ -1,5 +1,2 @@
 [Network]
 NetworkName=red-bot
-Driver=bridge
-IPv6=true
-IPAMDriver=host-local

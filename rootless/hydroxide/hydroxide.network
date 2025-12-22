@@ -1,5 +1,2 @@
 [Network]
 NetworkName=hydroxide
-Driver=bridge
-IPv6=true
-IPAMDriver=host-local

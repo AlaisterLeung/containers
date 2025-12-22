@@ -1,5 +1,2 @@
 [Network]
 NetworkName=radicale
-Driver=bridge
-IPv6=true
-IPAMDriver=host-local
