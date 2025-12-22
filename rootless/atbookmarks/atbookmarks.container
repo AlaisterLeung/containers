@@ -18,6 +18,7 @@ AutoUpdate=registry
 ExecStartPre=podman login --authfile %h/.config/containers/auth.json ghcr.io
 Restart=always
 RestartSec=5
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target

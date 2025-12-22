@@ -20,3 +20,4 @@ AutoUpdate=registry
 
 [Service]
 Restart=no
+TimeoutStartSec=900

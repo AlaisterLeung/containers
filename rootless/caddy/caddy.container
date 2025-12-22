@@ -19,6 +19,7 @@ AutoUpdate=registry
 ExecReload=/usr/bin/podman exec caddy caddy reload --config /etc/caddy/Caddyfile
 Restart=always
 RestartSec=5
+TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target
