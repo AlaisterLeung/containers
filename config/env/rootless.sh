@@ -35,9 +35,6 @@ export CONTAINERS_SECRETS=(
     # n8n
     n8n_smtp_sender
 
-    # pgAdmin
-    pgadmin_default_email pgadmin_default_password pgadmin_config_mail_sender
-
     # Postgres
     postgres_password
 
