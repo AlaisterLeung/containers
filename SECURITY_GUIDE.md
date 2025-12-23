@@ -113,7 +113,7 @@ If you need to backup secrets:
 
 ```bash
 # Export secrets (be careful with this!)
-podman secret inspect <secret_name> > /secure/location/secret.json
+podman secret inspect --showsecret <secret_name> > /secure/location/secret.json
 
 # Encrypt the backup
 gpg --symmetric --cipher-algo AES256 /secure/location/secret.json
