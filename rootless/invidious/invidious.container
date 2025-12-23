@@ -13,7 +13,8 @@ PodmanArgs=--cpus=4 -m=4g
 AutoUpdate=registry
 
 [Service]
-Restart=on-failure
+Restart=always
+RuntimeMaxSec=1h
 TimeoutStartSec=900
 
 [Install]

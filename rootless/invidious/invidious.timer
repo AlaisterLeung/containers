@@ -1,8 +1,0 @@
-[Unit]
-Description=Restart Invidious every hour
-
-[Install]
-WantedBy=timers.target
-
-[Timer]
-OnUnitActiveSec=1h
