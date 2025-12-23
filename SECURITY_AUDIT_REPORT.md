@@ -21,7 +21,7 @@ However, several configuration files contain placeholder values with TODO commen
 The following files contain placeholder values that **must be changed** before production use:
 
 #### A. PrivateBin Configuration (`rootless/privatebin/conf.php.ini`)
-- **Line 217-218:** Shlink API key placeholder
+- **Lines 217-218:** Shlink API key placeholder
   ```ini
   ; TODO: CHANGE THIS VALUE!!
   apikey = "your_api_key"
