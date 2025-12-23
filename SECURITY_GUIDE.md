@@ -14,10 +14,10 @@ Edit `rootless/invidious/config.yml`:
 
 ```bash
 # Generate a 16-character random key for Invidious companion
-pwgen 16 1  # or use: openssl rand -base64 12
+pwgen 16 1  # or use: openssl rand -hex 8
 
 # Generate a 20-character random key for HMAC
-pwgen 20 1  # or use: openssl rand -base64 15
+pwgen 20 1  # or use: openssl rand -hex 10
 ```
 
 Update these lines:
@@ -137,8 +137,8 @@ A `.gitignore` file is included to prevent accidental commits. It excludes:
 ### Manual Check
 
 ```bash
-# Check for common secret patterns
-grep -r -E '(password|passwd|api_key|apikey|secret|token).*=\s*".+"' \
+# Check for common secret patterns (actual values, not empty strings)
+grep -r -E '(password|passwd|api_key|apikey|secret|token)\s*=\s*"[^"]{8,}"' \
   --include="*.env" --include="*.conf" --include="*.yaml"
 
 # Check git history

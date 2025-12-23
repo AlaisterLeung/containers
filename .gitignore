@@ -85,10 +85,16 @@ tmp-*
 backup-credentials.*
 
 # === Specific to this Repository ===
-# Any files with 'secret' or 'private' in the name
-*secret*
-*private*
-*credential*
+# Files with sensitive data in the name (specific extensions)
+*secret*.txt
+*secret*.key
+*secret*.json
+*secret*.yaml
+*secret*.yml
+*private*.key
+*private*.pem
+*credential*.txt
+*credential*.json
 
 # Except for files that are meant to be committed
 !config/env/rootless.sh
