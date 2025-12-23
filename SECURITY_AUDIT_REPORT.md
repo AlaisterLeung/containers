@@ -71,7 +71,7 @@ The repository implements a **secure secret management system**:
 - Installation script (`bin/install.sh`) prompts for secrets interactively
 - Secrets are defined in:
   - `config/env/rootless.sh` (49 secrets listed)
-  - `config/env/rootful.sh` (6 secrets listed)
+  - `config/env/rootful.sh` (8 secrets listed)
 
 **Status:** ✅ Good practice - Secrets are never hardcoded
 
