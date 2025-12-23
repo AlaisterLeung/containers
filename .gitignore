@@ -1,0 +1,108 @@
+# Security: Prevent credential leaks
+# This .gitignore helps prevent accidental commits of sensitive information
+
+# === Secrets and Credentials ===
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+id_rsa*
+*.pub
+
+# Environment files with actual secrets (keep templates)
+# Note: .env files in this repo are templates and should be committed
+# But any local overrides should not be
+*.env.local
+*.env.production
+*.env.backup
+.env
+
+# Podman/Docker auth files
+auth.json
+.dockerconfigjson
+
+# === Configuration Overrides ===
+# Local configuration that might contain secrets
+*-local.*
+*_local.*
+*.override.*
+config.local.*
+
+# Backup files that might contain secrets
+*.bak
+*.backup
+*.old
+*.orig
+*~
+
+# === Sensitive Data ===
+# Database dumps
+*.sql
+*.dump
+*.sqlite
+*.db
+
+# Archive files that might contain secrets
+secrets.tar*
+secrets.zip
+credentials.*
+passwords.*
+
+# === Container and Deployment ===
+# Podman/Docker volumes (might contain data)
+volumes/
+data/
+
+# Kubernetes secrets
+*secret*.yaml
+*-secret.yaml
+
+# === Development and Temporary Files ===
+# Editor temporary files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs that might contain sensitive information
+*.log
+logs/
+
+# Temporary test files
+test-*.sh
+temp-*
+tmp-*
+
+# === Restic Backup Credentials ===
+# Prevent committing actual backup credentials
+# (templates in config/backup/ should remain)
+/var/backup/
+backup-credentials.*
+
+# === Specific to this Repository ===
+# Any files with 'secret' or 'private' in the name
+*secret*
+*private*
+*credential*
+
+# Except for files that are meant to be committed
+!config/env/rootless.sh
+!config/env/rootful.sh
+!rootless/*/setup.sh
+!rootful/*/setup.sh
+
+# Keep all .env template files (they contain no real secrets)
+!rootless/*/*.env
+!rootful/*/*.env
+!config/backup/*.env
+
+# Keep configuration templates
+!rootless/*/config.*
+!rootless/*/conf.*
+!rootful/*/config.*
+!rootful/*/conf.*
