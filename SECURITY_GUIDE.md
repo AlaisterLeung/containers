@@ -138,8 +138,8 @@ A `.gitignore` file is included to prevent accidental commits. It excludes:
 
 ```bash
 # Check for common secret patterns (actual values, not empty strings)
-grep -r -E '(password|passwd|api_key|apikey|secret|token)\s*=\s*"[^"]{8,}"' \
-  --include="*.env" --include="*.conf" --include="*.yaml"
+grep -r -E "(password|passwd|api_key|apikey|secret|token)\s*[:=]\s*['\"]?[^'\"[:space:]]{8,}['\"]?" \
+  --include="*.env" --include="*.conf" --include="*.yaml" --include="*.yml" --include="*.json"
 
 # Check git history
 git log --all -S 'password' --pretty=format:'%H %an %ad %s'
@@ -161,7 +161,7 @@ git secrets --register-aws
 docker run -v $(pwd):/path zricethezav/gitleaks:latest \
   detect --source="/path" -v
 
-# truffleHog (finds secrets in git history)
+# TruffleHog (finds secrets in git history)
 docker run --rm -v $(pwd):/repo trufflesecurity/trufflehog:latest \
   git file:///repo --json
 ```
