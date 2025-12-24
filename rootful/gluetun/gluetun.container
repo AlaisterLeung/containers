@@ -1,0 +1,24 @@
+[Unit]
+Description=Gluetun VPN Client
+
+[Container]
+ContainerName=gluetun
+Image=docker.io/qmcgaw/gluetun:v3
+Network=gluetun.network
+PublishPort=51820:51820/udp
+PublishPort=51821:51821/tcp
+EnvironmentFile=/etc/containers/systemd/atxoft/gluetun/gluetun.env
+Secret=gluetun_wireguard_private_key,type=env,target=WIREGUARD_PRIVATE_KEY
+Volume=gluetun.volume:/gluetun
+AddCapability=NET_ADMIN
+AddDevice=/dev/net/tun
+PodmanArgs=--cpus=2 -m=256m
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target
