@@ -1,3 +1,5 @@
 [Network]
 NetworkName=gluetun
+Gateway=10.89.1.1
+Subnet=10.89.1.0/24
 Options=mtu=1500
