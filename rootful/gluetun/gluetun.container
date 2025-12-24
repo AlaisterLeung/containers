@@ -7,8 +7,6 @@ Image=docker.io/qmcgaw/gluetun:v3
 Network=gluetun.network
 IP=10.89.1.2
 PublishPort=8020:8000/tcp
-PublishPort=51820:51820/udp
-PublishPort=51821:51821/tcp
 EnvironmentFile=/etc/containers/systemd/atxoft/gluetun/gluetun.env
 Secret=gluetun_wireguard_private_key,type=env,target=WIREGUARD_PRIVATE_KEY
 Volume=gluetun.volume:/gluetun
@@ -16,6 +14,9 @@ Volume=/etc/containers/systemd/atxoft/gluetun/post-rules.txt:/iptables/post-rule
 Volume=/lib/modules:/lib/modules:ro
 AddCapability=NET_ADMIN NET_RAW SYS_MODULE
 AddDevice=/dev/net/tun
+Sysctl=net.ipv4.ip_forward=1
+Sysctl=net.ipv4.conf.all.src_valid_mark=1
+Sysctl=net.ipv6.conf.all.disable_ipv6=1
 PodmanArgs=--cpus=2 -m=256m
 AutoUpdate=registry
 
