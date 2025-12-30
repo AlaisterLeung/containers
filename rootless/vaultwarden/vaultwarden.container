@@ -1,9 +1,9 @@
 [Unit]
-Description=Vaultwarden
+Description=Vaultwarden Server
 
 [Container]
 ContainerName=vaultwarden
-Image=docker.io/vaultwarden/server:latest
+Image=docker.io/vaultwarden/server:alpine
 Network=vaultwarden.network
 PublishPort=2280:80
 Volume=vaultwarden.volume:/data
