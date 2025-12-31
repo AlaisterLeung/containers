@@ -5,7 +5,8 @@ Description=Immich Machine Learning
 ContainerName=immich-machine-learning
 Image=ghcr.io/immich-app/immich-machine-learning:release-rocm
 Network=immich.network
-Environment=HSA_OVERRIDE_GFX_VERSION=9.0.0
+Environment=HSA_OVERRIDE_GFX_VERSION=10.3.0
+Environment=HSA_USE_SVM=0
 Volume=immich-model-cache:/cache
 AddDevice=/dev/dri
 AddDevice=/dev/kfd
