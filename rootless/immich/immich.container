@@ -12,7 +12,7 @@ EnvironmentFile=%h/.config/containers/systemd/atxoft/immich/immich.env
 Secret=immich_postgres_password,type=env,target=DB_PASSWORD
 Volume=immich-library.volume:/data
 AddDevice=/dev/dri
-PodmanArgs=--cpus=4 -m=4g
+PodmanArgs=--cpus=6 -m=4g
 AutoUpdate=registry
 
 [Service]

@@ -10,7 +10,7 @@ Environment=HSA_USE_SVM=0
 Volume=immich-model-cache:/cache
 AddDevice=/dev/dri
 AddDevice=/dev/kfd
-PodmanArgs=--cpus=4 -m=8g
+PodmanArgs=--cpus=6 -m=8g
 AutoUpdate=registry
 
 [Service]
