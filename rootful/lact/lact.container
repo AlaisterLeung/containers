@@ -1,0 +1,22 @@
+[Unit]
+Description=LACT Daemon
+
+[Container]
+ContainerName=lact
+Image=ghcr.io/ilya-zlobintsev/lact:master
+Volume=/dev/dri:/dev/dri
+Volume=/run:/run
+Volume=/sys:/sys
+Volume=/etc/containers/systemd/atxoft/lact/config:/etc/lact
+AddDevice=/dev/dri
+SecurityLabelDisable=true
+PodmanArgs=--cpus=1 -m=128m
+AutoUpdate=registry
+
+[Service]
+Restart=always
+RestartSec=5
+TimeoutStartSec=900
+
+[Install]
+WantedBy=default.target

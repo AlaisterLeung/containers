@@ -1,0 +1,16 @@
+version: 5
+daemon:
+  log_level: info
+  disable_clocks_cleanup: true
+apply_settings_timer: 5
+gpus:
+  1002:73FF-148C:2413-0000:12:00.0:
+    fan_control_enabled: false
+    power_cap: 120.0
+    performance_level: auto
+    min_core_clock: 2200
+    max_core_clock: 2600
+    max_memory_clock: 950
+    voltage_offset: -80
+current_profile: null
+auto_switch_profiles: false
