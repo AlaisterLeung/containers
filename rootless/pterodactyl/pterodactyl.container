@@ -16,7 +16,7 @@ Secret=hydroxide_password,type=env,target=MAIL_PASSWORD
 Secret=pterodactyl_mail_from,type=env,target=MAIL_FROM
 Volume=pterodactyl-var.volume:/app/var
 Volume=pterodactyl-nginx.volume:/etc/nginx/http.d
-Volume=pterodactyl-logs.volume:/app/storage/logs
+Volume=pterodactyl-logs:/app/storage/logs
 PodmanArgs=--cpus=2 -m=2g
 AutoUpdate=registry
 
