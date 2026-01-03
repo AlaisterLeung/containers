@@ -1,12 +1,12 @@
 /host/home/*/.cache
-/host/home/*/.local/share/containers/storage
-/host/home/*/.local/share/pterodactyl/volumes
+/host/home/*/.local/share/containers/storage/volumes
 
 /host/home/samba
 
 /host/root/.cache
 
+/host/var/backup
 /host/var/cache
 /host/var/crash
-/host/var/lib/containers/storage
+/host/var/lib/containers/storage/volumes
 /host/var/tmp
