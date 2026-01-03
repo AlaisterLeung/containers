@@ -1,11 +1,10 @@
 /host/home/*/.cache
 /host/home/*/.local/share/containers/storage
 /host/home/*/.local/share/pterodactyl/volumes
-/host/home/*/share
+
+/host/home/samba
 
 /host/root/.cache
-
-/host/srv/home-share
 
 /host/var/cache
 /host/var/crash

@@ -1,5 +1,5 @@
 [Unit]
-Description=Full system backup with Restic
+Description=Full system backup to Restic on Backblaze B2
 
 [Container]
 ContainerName=restic-root

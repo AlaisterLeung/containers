@@ -1,5 +1,5 @@
 [Unit]
-Description=Run restic-lj-share daily
+Description=Run restic-share backup task daily
 
 [Timer]
 OnCalendar=*-*-* 04:00:00

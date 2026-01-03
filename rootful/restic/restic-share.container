@@ -1,19 +1,19 @@
 [Unit]
-Description=lj-share backup with Restic
+Description=Private NAS backup to Restic on Backblaze B2
 
 [Container]
-ContainerName=restic-lj-share
+ContainerName=restic-share
 Image=docker.io/restic/restic:latest
 Entrypoint=/backup.sh
 HostName=atxoft
-Secret=restic_lj_share_repository,type=env,target=RESTIC_REPOSITORY
-Secret=restic_lj_share_password,type=env,target=RESTIC_PASSWORD
+Secret=restic_share_repository,type=env,target=RESTIC_REPOSITORY
+Secret=restic_share_password,type=env,target=RESTIC_PASSWORD
 Secret=restic_aws_access_key_id,type=env,target=AWS_ACCESS_KEY_ID
 Secret=restic_aws_secret_access_key,type=env,target=AWS_SECRET_ACCESS_KEY
-Volume=restic-lj-cache:/root/.cache/restic
-Volume=/home/alaister/share:/host/lj-share:ro
+Volume=restic-share-cache:/root/.cache/restic
+Volume=/home/samba/share:/host/share:ro
 Volume=/etc/containers/systemd/atxoft/restic/config/shares.txt:/etc/restic/excludes.txt:ro
-Volume=/etc/containers/systemd/atxoft/restic/bin/backup-lj-share.sh:/backup.sh
+Volume=/etc/containers/systemd/atxoft/restic/bin/backup-share.sh:/backup.sh
 SecurityLabelDisable=true
 PodmanArgs=--cpus=2 -m=4g
 AutoUpdate=registry

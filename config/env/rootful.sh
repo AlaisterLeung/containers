@@ -14,6 +14,5 @@ export CONTAINERS_SECRETS=(
     # Restic
     restic_aws_access_key_id restic_aws_secret_access_key
     restic_root_repository restic_root_password
-    restic_home_share_repository restic_home_share_password
-    restic_lj_share_repository restic_lj_share_password
+    restic_share_repository restic_share_password
 )

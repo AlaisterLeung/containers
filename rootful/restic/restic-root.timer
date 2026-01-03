@@ -1,5 +1,5 @@
 [Unit]
-Description=Run restic-root daily
+Description=Run restic-root backup task daily
 
 [Timer]
 OnCalendar=*-*-* 03:20:00
