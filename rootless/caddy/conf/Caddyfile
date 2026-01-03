@@ -48,10 +48,6 @@ localhost {
 	respond "Hello, world!"
 }
 
-b.atxoft.com {
-	reverse_proxy localhost:8040
-}
-
 fs.atxoft.com {
 	root * /public
 	file_server browse
@@ -83,10 +79,6 @@ my-converts.atxoft.com {
 		authorize with user_policy
 		reverse_proxy localhost:8100
 	}
-}
-
-my-media.atxoft.com {
-	reverse_proxy localhost:8096
 }
 
 my-yt.atxoft.com {
