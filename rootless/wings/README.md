@@ -14,7 +14,7 @@ mkdir -p $HOME/.local/share/pterodactyl
 
 ### Create a node in Pterodactyl Panel
 
-- Set **`Daemon Server File Directory`** to `/home/pod_user/.local/share/pterodactyl`
+- Set **`Daemon Server File Directory`** to `/home/pod_user/.local/share/pterodactyl/volumes`
 - Set **`Daemon Port`** to `443`
 
 ### Edit Wings config.yml
@@ -23,3 +23,4 @@ mkdir -p $HOME/.local/share/pterodactyl
   - `enabled` to `true`
   - both `container_uid` and `container_gid` to `988`
 - Set **`docker.log_config.type`** to `json-file`
+- Replace all occurrences of `/var/lib/pterodactyl` to `/home/pod_user/.local/share/pterodactyl`

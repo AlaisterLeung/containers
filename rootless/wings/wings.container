@@ -9,7 +9,8 @@ PublishPort=8061:443
 PublishPort=2022:2022
 EnvironmentFile=%h/.config/containers/systemd/atxoft/wings/wings.env
 Volume=wings-config.volume:/etc/pterodactyl
-Volume=wings-logs.volume:/var/log/pterodactyl
+# No backup for these volumes
+Volume=wings-logs:/var/log/pterodactyl
 Volume=wings-tmp:/tmp/pterodactyl
 Volume=/run/user/%U/podman/podman.sock:/var/run/docker.sock:z
 Volume=%h/.local/share/containers:/var/lib/docker/containers:z
